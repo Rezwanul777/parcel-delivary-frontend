@@ -1,4 +1,12 @@
-import * as React from "react"
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import * as React from "react";
+import { ChevronRight } from "lucide-react";
+
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
 import {
   Sidebar,
   SidebarContent,
@@ -10,47 +18,66 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarRail,
-} from "@/components/ui/sidebar"
-import { useUserInfoQuery } from "@/redux/features/auth/auth.api"
+} from "@/components/ui/sidebar";
+import { useUserInfoQuery } from "@/redux/features/auth/auth.api";
 
-//import Logo from "@/assets/icons/Logo"
-import { Link } from "react-router"
-import { getSidebarItems } from "@/utils/getSidebarItems"
 
+import { Link } from "react-router";
+import Logo from "@/assets/icons/Logo";
+import { getSidebarItems } from "@/utils/getSidebarItems";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
-  
-  const {data: userData} = useUserInfoQuery(undefined)
+
+
+  const { data: userInfo } = useUserInfoQuery(undefined);
+  // console.log(userInfo);
+
   const data = {
-    navMain: getSidebarItems(userData?.data?.data?.role)
-  }
+    navMain: getSidebarItems(userInfo?.data?.role),
+  };
 
   return (
     <Sidebar {...props}>
-      <SidebarHeader className="items-center">
-        {/* <Link to="/">
-          <Logo/>
-        </Link> */}
+      <SidebarHeader>
+      <Logo/>
       </SidebarHeader>
-      <SidebarContent>
-        {data.navMain.map((item) => (
-          <SidebarGroup key={item.title}>
-            <SidebarGroupLabel>{item.title}</SidebarGroupLabel>
-            <SidebarGroupContent>
-              <SidebarMenu>
-                {item.items.map((item) => (
-                  <SidebarMenuItem key={item.title}>
-                    <SidebarMenuButton asChild>
-                      <Link to={item.url}>{item.title}</Link>
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-                ))}
-              </SidebarMenu>
-            </SidebarGroupContent>
-          </SidebarGroup>
+      <SidebarContent className="gap-0">
+        {/* We create a collapsible SidebarGroup for each parent. */}
+        {data.navMain.map((item : any) => (
+          <Collapsible
+            key={item.title}
+            title={item.title}
+            defaultOpen
+            className="group/collapsible"
+          >
+            <SidebarGroup>
+              <SidebarGroupLabel
+                asChild
+                className="group/label text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground text-sm"
+              >
+                <CollapsibleTrigger>
+                  {item.title}{" "}
+                  <ChevronRight className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-90" />
+                </CollapsibleTrigger>
+              </SidebarGroupLabel>
+              <CollapsibleContent>
+                <SidebarGroupContent>
+                  <SidebarMenu>
+                    {item.items.map((item:any) => (
+                      <SidebarMenuItem key={item.title}>
+                        <SidebarMenuButton asChild className="bg-slate-700">
+                          <Link to={item.url}>{item.title}</Link>
+                        </SidebarMenuButton>
+                      </SidebarMenuItem>
+                    ))}
+                  </SidebarMenu>
+                </SidebarGroupContent>
+              </CollapsibleContent>
+            </SidebarGroup>
+          </Collapsible>
         ))}
       </SidebarContent>
       <SidebarRail />
     </Sidebar>
-  )
+  );
 }

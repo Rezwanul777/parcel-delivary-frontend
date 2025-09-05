@@ -1,44 +1,14 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import type { ComponentType } from "react";
 
-export interface ISidebarItem {
+export interface ISidebarItems {
   title: string;
   items: {
     title: string;
     url: string;
-    Component: ComponentType;
+    component?: ComponentType;
+    element?: any;
   }[];
 }
 
-export type TRole = "ADMIN" | "SENDER" | "RECEIVER";
-
-type ZodIssue = {
-  code: string;
-  expected: string;
-  received: string;
-  path: string[];
-  message: string;
-};
-
-type ErrorSource = {
-  path: string;
-  message: string;
-};
-
-export interface IErrorResponse {
-  success: boolean;
-  message: string;
-  errorSources?: ErrorSource[];
-  err?: {
-    issues: ZodIssue[];
-    name: string;
-  };
-  stack?: string;
-}
-export type Status =
-  | "REQUESTED"
-  | "APPROVED"
-  | "DISPATCHED"
-  | "IN_TRANSIT"
-  | "DELIVERED"
-  | "CANCELED"
-  | "BLOCKED";
+export type TRole = "admin"  | "sender" | "receiver" ;

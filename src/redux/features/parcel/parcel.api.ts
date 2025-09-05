@@ -1,124 +1,114 @@
 import { baseApi } from "@/redux/baseApi";
 
-
 export const parcelApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
-    // Create Parcel
     createParcel: builder.mutation({
-      query: (parcelData) => ({
-        url: "/parcel",
+      query: (createParcel) => ({
+        url: "/parcel/create",
         method: "POST",
-        data: parcelData,
+        data: createParcel,
       }),
       invalidatesTags: ["PARCEL"],
     }),
 
-    // Update Parcel Status (Admin only)
-    updateParcelStatus: builder.mutation({
-      query: ({ trackingId,status,note,location}) => ({
-        url: `/parcel/${trackingId}/status`,
-        method: "PATCH",
-        data:{status,note,location}
-      }),
-   
-      invalidatesTags: ["PARCEL"],
-    }),
-
-    // Cancel Parcel (Sender only)
-    cancelParcel: builder.mutation({
-      query: ({trackingId, status, note, location}) => ({
-        url: `/parcel/${trackingId}/cancel`,
-        method: "PATCH",
-        data:{status,note,location}
-      }),
-      invalidatesTags: ["PARCEL"],
-    }),
-
-    // View My Parcels (Sender only)
     getMyParcels: builder.query({
-      query: () =>({
-        url:"/parcel/my-parcels",
-        method:"GET"
+      query: () => ({
+        url: "/parcel/my-parcels",
+        method: "GET",
       }),
       providesTags: ["PARCEL"],
     }),
 
-    // Incoming Parcels (Receiver only)
     getIncomingParcels: builder.query({
-      query: () =>({
-         url:"/parcel/incoming-parcels",
-         method:"GET"
-      }) ,
+      query: () => ({
+        url: "/parcel/incoming",
+        method: "GET",
+      }),
       providesTags: ["PARCEL"],
     }),
 
-    // Confirm Delivery (Receiver only)
-    confirmDelivery: builder.mutation({
-      query: ({trackingId,status, note, location}) => ({
-        url: `/parcel/${trackingId}/confirm`,
+    getDeliveredParcels: builder.query({
+      query: (status: string = "Delivered") => ({
+        url: `/parcel/my-parcels?status=${status}`,
+        method: "GET",
+      }),
+      providesTags: ["PARCEL"],
+    }),
+
+    cancelParcel: builder.mutation({
+      query: ({ id }) => ({
+        url: `/parcel/cancel/${id}`,
         method: "PATCH",
-        data:{status,note,location}
       }),
       invalidatesTags: ["PARCEL"],
     }),
 
-    // Delivery History (Receiver only)
-    getDeliveryHistory: builder.query({
-      query: () =>({
-        url:"/parcel/delivery-history",
-        method:"GET"
+    confirmParcel: builder.mutation({
+      query: ({ id }) => ({
+        url: `/parcel/confirm/${id}`,
+        method: "PATCH",
       }),
-      providesTags: ["PARCEL"],
+      invalidatesTags: ["PARCEL"],
     }),
 
-    // Get All Parcels (Admin only)
     getAllParcels: builder.query({
-      query: () =>({
-        url:"/parcel",
-        method:"GET"
-      }) ,
+      query: () => ({
+        url: "/parcel",
+        method: "GET",
+      }),
       providesTags: ["PARCEL"],
     }),
 
-    // Get Single Parcel
-    getSingleParcel: builder.query({
-      query: (trackingId) =>({
-        url:`/parcel/${trackingId}`,
-        method:"GET",
+    blockParcel: builder.mutation({
+      query: ({ id }) => ({
+        url: `/parcel/block/${id}`,
+        method: "PATCH",
       }),
-      providesTags:["PARCEL"],
+      invalidatesTags: ["PARCEL"],
     }),
 
-    // Block Parcel (Admin only)
-    blockParcel: builder.mutation({
-      query: ({trackingId,note,location}) => ({
-        url: `/parcel/${trackingId}/block`,
+    unBlockParcel: builder.mutation({
+      query: ({ id }) => ({
+        url: `/parcel/unblock/${id}`,
         method: "PATCH",
-        body:{ note, location },
       }),
       invalidatesTags: ["PARCEL"],
     }),
-    unblockParcel: builder.mutation({
-      query: ({trackingId,note,location}) => ({
-        url: `/parcel/${trackingId}/unblock`,
-        method: "PATCH",
-        body:{ note, location },
+
+    trackParcelByTid: builder.query({
+      query: (id: string) => ({
+        url: `/parcel/track/${id}`,
+        method: "GET",
       }),
-      invalidatesTags: ["PARCEL"],
+      providesTags: ["PARCEL"],
     }),
+
+
+
+updateParcelStatus: builder.mutation({
+  query: ({ id, status }) => ({
+    url: `/parcel/status/${id}`,
+    method: "PATCH",
+    body: { currentStatus: status },
+  }),
+  invalidatesTags: ["PARCEL"],
+}),
+
+
+
   }),
 });
 
 export const {
   useCreateParcelMutation,
-  useUpdateParcelStatusMutation,
-  useCancelParcelMutation,
   useGetMyParcelsQuery,
+  useCancelParcelMutation,
   useGetIncomingParcelsQuery,
-  useConfirmDeliveryMutation,
-  useGetDeliveryHistoryQuery,
+  useConfirmParcelMutation,
+  useGetDeliveredParcelsQuery,
   useGetAllParcelsQuery,
-  useGetSingleParcelQuery,
   useBlockParcelMutation,
-  useUnblockParcelMutation
+  useUnBlockParcelMutation,
+  useLazyTrackParcelByTidQuery,
+  useUpdateParcelStatusMutation
 } = parcelApi;
