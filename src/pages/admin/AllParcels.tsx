@@ -47,7 +47,7 @@ const AllParcels = () => {
 
   // --- PAGINATION ---
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 8;
+  const itemsPerPage = 5;
   const totalItems = data?.data?.length || 0;
   const totalPages = Math.ceil(totalItems / itemsPerPage);
 
@@ -81,7 +81,7 @@ const AllParcels = () => {
   const updateParcelStatusDirectly = async (parcelId: string, status: string) => {
     try {
       const response = await fetch(
-        `https://parcel-delivery-backend-rho.vercel.app/api/parcel/status/${parcelId}`,
+        `http://localhost:5000/api/v1/parcel/status/${parcelId}`,
         {
           method: "PATCH",
           headers: {

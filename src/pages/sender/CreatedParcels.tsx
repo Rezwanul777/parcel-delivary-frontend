@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { CreatedParcelModal } from "@/components/modules/sender/CreateParcelModal";
 import { Button } from "@/components/ui/button";
 import {
@@ -12,7 +13,7 @@ import {
   useCancelParcelMutation,
   useGetMyParcelsQuery,
 } from "@/redux/features/parcel/parcel.api";
-import type { IParcelItem } from "@/types/parcel.interface";
+
 import { toast } from "sonner";
 
 import {
@@ -28,7 +29,9 @@ import {
 } from "@/components/ui/alert-dialog";
 import { useState } from "react";
 import Pagination from "@/components/Pagination";
-import SkeletonTable from "@/components/provider/SkeletonTable";
+import SkeletonTable from "@/components/modules/provider/SkeletonTable";
+import type { IParcelItem } from "@/types/paercel.interface";
+
 
 const CreatedParcels = () => {
   const { data, isLoading } = useGetMyParcelsQuery(undefined);
