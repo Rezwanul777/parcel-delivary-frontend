@@ -81,7 +81,7 @@ const AllParcels = () => {
   const updateParcelStatusDirectly = async (parcelId: string, status: string) => {
     try {
       const response = await fetch(
-        `http://localhost:5000/api/v1/parcel/status/${parcelId}`,
+        `https://parcel-delivery-backend-rho.vercel.app/api/v1/parcel/status/${parcelId}`,
         {
           method: "PATCH",
           headers: {
