@@ -36,9 +36,9 @@ const SenderOverview = () => {
       <div className="max-w-sm gap-4">
         {/* Parcels */}
         <Link to="/sender/created-parcels">
-          <Card className="p-6 text-center hover:bg-gray-700 transition-colors">
+          <Card className="p-6 text-center hover:bg-gray-600 transition-colors">
             <CardContent>
-              <p className="text-sm text-gray-100">Total Parcels</p>
+              <p className="text-sm text-gray-900 hover:text-white">Total Parcels</p>
               <p className="text-3xl font-bold text-primary mt-2">
                 {allParcels}
               </p>

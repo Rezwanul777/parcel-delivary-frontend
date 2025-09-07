@@ -1,69 +1,53 @@
-# React + TypeScript + Vite
+📦 Parcel Delivery Management Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+###This project demonstrates a complete Parcel Delivery Management System with role-based access, real-time updates, and modern frontend best practices.
 
-Currently, two official plugins are available:
+🚀 Technologies Used
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+React.js – UI development
 
-## Expanding the ESLint configuration
+TypeScript – Type safety
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Redux Toolkit + RTK Query – State management & API calls
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+ShadCN/UI – Modern, accessible UI components
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+✨ Features
+🔑 Authentication & Dashboard
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+JWT-based authentication system
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Role-specific dashboards: Admin, Sender, Receiver
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+📮 Sender
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Create parcel delivery requests
+
+Cancel a parcel (if not dispatched)
+
+View all created parcels
+
+📦 Receiver
+
+View incoming parcels
+
+Confirm parcel delivery
+
+Access full delivery history
+
+🛠️ Admin
+
+Manage all users and parcels
+
+Block/unblock users and parcels
+
+Update parcel statuses (e.g., Approved, In Transit, Delivered)
+
+👤 Test User Credentials
+
+
+| Role         | Email                                           | Password  |
+| ------------ | ----------------------------------------------- | --------- |
+| **Admin**    | [super@gmail.com](mailto:super@gmail.com)       | 12345678 |
+| **Sender**   | [sender@gmail.com](mailto:sender@gmail.com)     | 12345678 |
+| **Receiver** | [receiver@gmail.com](mailto:receiver@gmail.com) | 12345678 |

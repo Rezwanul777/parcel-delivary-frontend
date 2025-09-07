@@ -40,7 +40,7 @@ const AdminOverview = () => {
         <Link to="/admin/all-parcels">
           <Card className="p-6 text-center hover:bg-gray-700 transition-colors">
             <CardContent>
-              <p className="text-sm text-gray-100">Total Parcels</p>
+              <p className="text-sm text-gray-500">Total Parcels</p>
               <p className="text-3xl font-bold text-primary mt-2">{allParcels}</p>
             </CardContent>
           </Card>
@@ -50,7 +50,7 @@ const AdminOverview = () => {
         <Link to="/admin/all-users">
           <Card className="p-6 text-center hover:bg-gray-700 transition-colors">
             <CardContent>
-              <p className="text-sm text-gray-100">Total Users</p>
+              <p className="text-sm text-gray-500">Total Users</p>
               <p className="text-3xl font-bold text-primary mt-2">{allUsers}</p>
             </CardContent>
           </Card>

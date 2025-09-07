@@ -38,7 +38,7 @@ const ReceiverOverview = () => {
         <Link to="/receiver/incoming-parcels">
           <Card className="p-6 text-center hover:bg-gray-700 transition-colors">
             <CardContent>
-              <p className="text-sm text-gray-100">Incoming Parcels</p>
+              <p className="text-sm text-gray-500">Incoming Parcels</p>
               <p className="text-3xl font-bold text-primary mt-2">{allParcels}</p>
             </CardContent>
           </Card>
@@ -48,7 +48,7 @@ const ReceiverOverview = () => {
         <Link to="/receiver/delivered-parcels">
           <Card className="p-6 text-center hover:bg-gray-700 transition-colors">
             <CardContent>
-              <p className="text-sm text-gray-100">Delivered parcels</p>
+              <p className="text-sm text-gray-500">Delivered parcels</p>
               <p className="text-3xl font-bold text-primary mt-2">{allUsers}</p>
             </CardContent>
           </Card>

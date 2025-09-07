@@ -65,7 +65,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                   <SidebarMenu>
                     {item.items.map((item:any) => (
                       <SidebarMenuItem key={item.title}>
-                        <SidebarMenuButton asChild className="bg-slate-700">
+                        <SidebarMenuButton asChild className="bg-slate-500">
                           <Link to={item.url}>{item.title}</Link>
                         </SidebarMenuButton>
                       </SidebarMenuItem>

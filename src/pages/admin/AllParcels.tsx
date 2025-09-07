@@ -119,7 +119,7 @@ const AllParcels = () => {
 
       
       <Table>
-        <TableHeader className="bg-slate-800 text-white">
+        <TableHeader className="bg-slate-400 text-white">
           <TableRow>
             <TableHead>Tracking ID</TableHead>
             <TableHead>Type</TableHead>

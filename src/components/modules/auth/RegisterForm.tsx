@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -63,7 +64,7 @@ export function RegisterForm({
         <CardContent className="grid p-0 md:grid-cols-2">
           <div className="bg-muted relative hidden md:block">
             <img
-              src="/login.png"
+              src="/login1.jpg"
               alt="Image"
               className="absolute inset-0 h-full w-full object-cover dark:brightness-[0.6]"
             />
@@ -85,7 +86,7 @@ export function RegisterForm({
                 render={({ field }) => (
                   <div className="grid gap-2">
                     <Label htmlFor="name">Name</Label>
-                    <Input id="name" placeholder="Disco Dancer" {...field} />
+                    <Input id="name" placeholder="Murid Khan" {...field} />
                     <FormMessage />
                   </div>
                 )}
@@ -101,7 +102,7 @@ export function RegisterForm({
                     <Input
                       id="email"
                       type="email"
-                      placeholder="disco@dancer.com"
+                      placeholder="murid@dancer.com"
                       {...field}
                     />
                     <FormMessage />
@@ -121,13 +122,13 @@ export function RegisterForm({
                       {...field}
                       className="input-class  border border-slate-600 p-2 rounded-md"
                     >
-                      <option className="bg-slate-900" value="">
+                      <option className="bg-slate-300" value="">
                         Select role
                       </option>
-                      <option className="bg-slate-900" value="sender">
+                      <option className="bg-slate-300" value="sender">
                         Sender
                       </option>
-                      <option className="bg-slate-900" value="receiver">
+                      <option className="bg-slate-300" value="receiver">
                         Receiver
                       </option>
                     </select>

@@ -55,7 +55,7 @@ const AllUsers = () => {
       </h1>
 
       <Table>
-        <TableHeader className="bg-slate-800 text-white">
+        <TableHeader className="bg-slate-500 text-white">
           <TableRow>
             <TableHead>Name</TableHead>
             <TableHead>Email</TableHead>

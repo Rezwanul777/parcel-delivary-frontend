@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -101,7 +102,7 @@ export function LoginForm({
           </Form>
           <div className="bg-muted relative hidden md:block">
             <img
-              src="/login.png"
+              src="/login1.jpg"
               alt="Image"
               className="absolute inset-0 h-full w-full object-cover dark:brightness-[0.6]"
             />
